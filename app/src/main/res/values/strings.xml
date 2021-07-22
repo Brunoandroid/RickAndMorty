@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">RickAndMorty</string>
+
+    <!-- Exceptions -->
+    <string name="FalhaAoBuscarPersonagensException">Falha ao Buscar Personagens</string>
+    <string name="FalhaNaComunicacaoComApi">Falha na Comunicação com a Api</string>
 </resources>
