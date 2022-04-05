@@ -11,7 +11,7 @@ import java.net.ConnectException
 import javax.inject.Inject
 
 @ActivityRetainedScoped
-class Repository @Inject constructor(private val characterApiHelper: CharacterApiHelper) {
+class CharactersRepository @Inject constructor(private val characterApiHelper: CharacterApiHelper) {
 
     suspend fun getCharacteres() = liveData {
         try {

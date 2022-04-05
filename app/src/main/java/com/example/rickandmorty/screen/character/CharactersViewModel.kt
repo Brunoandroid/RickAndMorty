@@ -9,7 +9,7 @@ import com.example.rickandmorty.utils.Resultado
 
 
 class CharactersViewModel @ViewModelInject constructor(
-    private val repository: Repository,
+    private val repository: CharactersRepository,
     application: Application
 ): AndroidViewModel(application) {
 
