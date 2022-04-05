@@ -1,6 +1,6 @@
-package com.example.rickandmorty.ui.di
+package com.example.rickandmorty.di
 
-import com.example.rickandmorty.data.api.RequestApi
+import com.example.rickandmorty.data.character.CharacterApi
 import com.example.rickandmorty.utils.Constants.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -46,8 +46,8 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providerApiService(retrofit: Retrofit): RequestApi {
-        return retrofit.create(RequestApi::class.java)
+    fun providerApiService(retrofit: Retrofit): CharacterApi {
+        return retrofit.create(CharacterApi::class.java)
     }
 
 }

@@ -1,11 +1,10 @@
-package com.example.rickandmorty.ui.main.viewmodel
+package com.example.rickandmorty.screen.character
 
 import android.app.Application
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.example.rickandmorty.data.api.model.Result
-import com.example.rickandmorty.data.repository.Repository
+import com.example.rickandmorty.data.model.character.Result
 import com.example.rickandmorty.utils.Resultado
 
 

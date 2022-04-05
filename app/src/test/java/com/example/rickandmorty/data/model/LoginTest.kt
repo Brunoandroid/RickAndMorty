@@ -1,5 +1,6 @@
 package com.example.rickandmorty.data.model
 
+import com.example.rickandmorty.data.model.login.Login
 import com.google.common.truth.Truth.assertThat
 import org.junit.Assert.assertEquals
 import org.junit.Test
