@@ -13,6 +13,7 @@ class CharacterApiHelperImpl @Inject constructor(
     override suspend fun getCharacters(): Response<CharacterResponse?> =
         characterApi.getCharacters()
 
-
+    override suspend fun getAllCharacters(page: Int): Response<CharacterResponse?> =
+        characterApi.getAllCharacters(page)
 
 }
