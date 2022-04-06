@@ -36,11 +36,9 @@
         motion:constraintSetStart="@+id/start"
         motion:constraintSetEnd="@+id/end"
         motion:autoTransition="animateToStart" >
-        <OnSwipe
-            motion:dragDirection="dragUp"
-            motion:touchAnchorId="@id/recyclerView"
-            motion:touchAnchorSide="top"
-            />
+
+        <OnSwipe motion:touchAnchorId="@+id/recyclerView" />
+
     </Transition>
 
 </MotionScene>
