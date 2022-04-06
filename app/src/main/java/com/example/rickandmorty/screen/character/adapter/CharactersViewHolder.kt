@@ -41,7 +41,8 @@ class CharactersViewHolder(
         character?.let {
             binding.cvCharacter.setData(
                 nameCharacter = it.name,
-                imageUrl = it.image
+                imageUrl = it.image,
+                status = it.status
             )
         }
     }
