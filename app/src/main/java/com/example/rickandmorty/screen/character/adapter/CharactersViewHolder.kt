@@ -40,7 +40,8 @@ class CharactersViewHolder(
 
         character?.let {
             binding.cvCharacter.setData(
-                nameCharacter = it.name
+                nameCharacter = it.name,
+                imageUrl = it.image
             )
         }
     }
