@@ -3,7 +3,6 @@ package com.example.rickandmorty.screen.character
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.rickandmorty.data.character.CharacterApi
-import com.example.rickandmorty.data.character.CharacterApiHelper
 import com.example.rickandmorty.data.model.character.Result
 
 class CharactersPagingSource(

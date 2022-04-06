@@ -7,7 +7,6 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
 import com.example.rickandmorty.data.character.CharacterApi
-import com.example.rickandmorty.data.character.CharacterApiHelper
 import com.example.rickandmorty.data.exception.FalhaAoBuscarPersonagensException
 import com.example.rickandmorty.data.exception.FalhaNaComunicacaoComApiException
 import com.example.rickandmorty.data.model.character.Result
