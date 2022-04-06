@@ -18,12 +18,12 @@ import javax.inject.Inject
 
 @ActivityRetainedScoped
 class CharactersRepository @Inject constructor(
-    private val characterApiHelper: CharacterApiHelper
+    private val characterApi: CharacterApi
     ) {
 
     suspend fun getCharacteres() = liveData {
         try {
-            val resposta = characterApiHelper.getCharacters()
+            val resposta = characterApi.getCharacters()
             if (resposta.isSuccessful) {
                 emit(Resultado.Sucesso(dado = resposta.body()?.results))
             } else {
@@ -43,7 +43,7 @@ class CharactersRepository @Inject constructor(
                 enablePlaceholders = false
             ),
             pagingSourceFactory = {
-                CharactersPagingSource(characterApiHelper)
+                CharactersPagingSource(characterApi)
             }
         ).liveData
 
