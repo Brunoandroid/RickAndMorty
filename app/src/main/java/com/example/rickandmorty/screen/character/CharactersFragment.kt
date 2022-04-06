@@ -21,7 +21,6 @@ class CharactersFragment : Fragment() {
 
         _bindingCharacters = FragmentCharactersBinding.inflate(inflater, container, false)
 
-
         return bindingCharacters.root
     }
 
