@@ -49,7 +49,6 @@ class CharactersFragment : Fragment() {
     private suspend fun setData(data: PagingData<Result>) {
         val adapter = CharacterPagingAdapter()
         bindingCharacters.recyclerView.adapter = adapter
-
         adapter.submitData(data)
     }
 
