@@ -13,7 +13,6 @@ import com.example.rickandmorty.data.model.character.Result
 import com.example.rickandmorty.databinding.FragmentCharactersBinding
 import com.example.rickandmorty.screen.character.adapter.CharacterPagingAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -23,6 +22,8 @@ class CharactersFragment : Fragment() {
 
     lateinit var _bindingCharacters: FragmentCharactersBinding
     val bindingCharacters: FragmentCharactersBinding get() = _bindingCharacters
+
+    val adapter = CharacterPagingAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +35,13 @@ class CharactersFragment : Fragment() {
         getAllCharacters()
 
         observerData()
+
+        adapter.listener = object : CharacterPagingAdapter.Listener {
+            override fun onCardClicked(result: Result, position: Int) {
+                result
+                position
+            }
+        }
 
         return bindingCharacters.root
     }
@@ -47,7 +55,6 @@ class CharactersFragment : Fragment() {
     }
 
     private suspend fun setData(data: PagingData<Result>) {
-        val adapter = CharacterPagingAdapter()
         bindingCharacters.recyclerView.adapter = adapter
         adapter.submitData(data)
     }

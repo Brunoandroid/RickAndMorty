@@ -26,9 +26,9 @@ class CharacterPagingAdapter :
             }
     }
 
-    var listener: Listerner? = null
+    var listener: Listener? = null
 
-    interface Listerner {
+    interface Listener {
         fun onCardClicked(result: Result, position: Int)
     }
 

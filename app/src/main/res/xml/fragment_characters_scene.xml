@@ -16,6 +16,23 @@
             android:id="@+id/layoutInit"
             android:layout_width="match_parent"
             android:layout_height="200dp" />
+        <Constraint
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RICK AND MORTY"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent">
+            <CustomAttribute
+                motion:attributeName="textColor"
+                motion:customColorValue="#000000"
+                />
+        </Constraint>
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -31,6 +48,23 @@
             android:id="@+id/layoutInit"
             android:layout_width="match_parent"
             android:layout_height="50dp" />
+        <Constraint
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RICK AND MORTY"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent">
+            <CustomAttribute
+                motion:attributeName="textColor"
+                motion:customColorValue="#FFFFFF"
+                />
+        </Constraint>
     </ConstraintSet>
     <Transition
         motion:constraintSetStart="@+id/start"

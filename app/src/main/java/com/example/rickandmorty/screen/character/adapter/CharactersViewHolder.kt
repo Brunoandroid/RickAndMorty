@@ -8,13 +8,13 @@ import com.example.rickandmorty.databinding.AdapterCharacterBinding
 
 class CharactersViewHolder(
     private val binding: AdapterCharacterBinding,
-    private val listener: CharacterPagingAdapter.Listerner?
+    private val listener: CharacterPagingAdapter.Listener?
 ): RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun create(
             parent: ViewGroup,
-            listener: CharacterPagingAdapter.Listerner?
+            listener: CharacterPagingAdapter.Listener?
         ): CharactersViewHolder {
             val inflater = LayoutInflater.from(parent.context)
             val binding = AdapterCharacterBinding.inflate(inflater, parent, false)
