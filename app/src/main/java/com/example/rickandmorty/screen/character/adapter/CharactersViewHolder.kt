@@ -9,7 +9,7 @@ import com.example.rickandmorty.databinding.AdapterCharacterBinding
 class CharactersViewHolder(
     private val binding: AdapterCharacterBinding,
     private val listener: CharacterPagingAdapter.Listener?
-): RecyclerView.ViewHolder(binding.root) {
+) : RecyclerView.ViewHolder(binding.root) {
 
     companion object {
         fun create(

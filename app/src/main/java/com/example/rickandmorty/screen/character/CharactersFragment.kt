@@ -18,16 +18,15 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class CharactersFragment : Fragment() {
 
-    val charactersViewModel: CharactersViewModel by viewModels()
+    private val charactersViewModel: CharactersViewModel by viewModels()
 
-    lateinit var _bindingCharacters: FragmentCharactersBinding
-    val bindingCharacters: FragmentCharactersBinding get() = _bindingCharacters
+    private lateinit var _bindingCharacters: FragmentCharactersBinding
+    private val bindingCharacters: FragmentCharactersBinding get() = _bindingCharacters
 
-    val adapter = CharacterPagingAdapter()
+    private val adapter = CharacterPagingAdapter()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
 
         _bindingCharacters = FragmentCharactersBinding.inflate(inflater, container, false)
@@ -38,8 +37,7 @@ class CharactersFragment : Fragment() {
 
         adapter.listener = object : CharacterPagingAdapter.Listener {
             override fun onCardClicked(result: Result, position: Int) {
-                result
-                position
+                println("$result \n Index: $position")
             }
         }
 
