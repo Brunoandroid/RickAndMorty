@@ -6,13 +6,13 @@ plugins {
 }
 
 android {
-    compileSdk 30
+    compileSdk 33
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.example.rickandmorty"
         minSdk 21
-        targetSdk 30
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -47,6 +47,9 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
     implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
+
+    testImplementation "junit:junit:4.13.2"
+    testImplementation "com.google.truth:truth:1.0.1"  //assertThat
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'

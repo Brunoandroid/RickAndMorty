@@ -15,7 +15,9 @@
         <Constraint
             android:id="@+id/layoutInit"
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="200dp"
+            motion:layout_editor_absoluteX="-1dp"
+            motion:layout_constraintTop_toTopOf="parent" />
         <Constraint
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
