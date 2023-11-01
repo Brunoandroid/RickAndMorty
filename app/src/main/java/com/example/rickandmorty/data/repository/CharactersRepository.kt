@@ -1,4 +1,4 @@
-package com.example.rickandmorty.screen.character
+package com.example.rickandmorty.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.paging.Pager
@@ -7,6 +7,7 @@ import androidx.paging.PagingData
 import androidx.paging.liveData
 import com.example.rickandmorty.data.character.CharacterApi
 import com.example.rickandmorty.data.model.character.Result
+import com.example.rickandmorty.screen.character.CharactersPagingSource
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import javax.inject.Inject
 
