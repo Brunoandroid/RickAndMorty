@@ -4,4 +4,6 @@
     <!-- Exceptions -->
     <string name="FalhaAoBuscarPersonagensException">Falha ao Buscar Personagens</string>
     <string name="FalhaNaComunicacaoComApi">Falha na Comunicação com a Api</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.rickandmorty.screen.character
+package com.example.rickandmorty.screen.characters
 
 import android.app.Application
 import androidx.hilt.lifecycle.ViewModelInject

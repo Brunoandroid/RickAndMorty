@@ -1,4 +1,4 @@
-package com.example.rickandmorty.screen.character
+package com.example.rickandmorty.screen.characters
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,10 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import androidx.paging.PagingData
 import com.example.rickandmorty.data.model.character.Result
 import com.example.rickandmorty.databinding.FragmentCharactersBinding
-import com.example.rickandmorty.screen.character.adapter.CharacterPagingAdapter
+import com.example.rickandmorty.screen.characters.adapter.CharacterPagingAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -38,6 +39,9 @@ class CharactersFragment : Fragment() {
         adapter.listener = object : CharacterPagingAdapter.Listener {
             override fun onCardClicked(result: Result, position: Int) {
                 println("$result \n Index: $position")
+                val action = CharactersFragmentDirections.actionCharactersFragmentToCharacterDetailsFragment(
+                    result)
+                findNavController().navigate(action)
             }
         }
 

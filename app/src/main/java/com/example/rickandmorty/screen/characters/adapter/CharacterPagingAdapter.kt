@@ -1,4 +1,4 @@
-package com.example.rickandmorty.screen.character.adapter
+package com.example.rickandmorty.screen.characters.adapter
 
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter

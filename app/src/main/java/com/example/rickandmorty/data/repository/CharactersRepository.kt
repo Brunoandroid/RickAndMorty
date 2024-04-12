@@ -7,7 +7,7 @@ import androidx.paging.PagingData
 import androidx.paging.liveData
 import com.example.rickandmorty.data.character.CharacterApi
 import com.example.rickandmorty.data.model.character.Result
-import com.example.rickandmorty.screen.character.CharactersPagingSource
+import com.example.rickandmorty.screen.characters.CharactersPagingSource
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import javax.inject.Inject
 
