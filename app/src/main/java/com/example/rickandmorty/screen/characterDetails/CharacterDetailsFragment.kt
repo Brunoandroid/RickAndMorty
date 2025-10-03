@@ -41,5 +41,4 @@ class CharacterDetailsFragment : Fragment() {
 
     }
 
-
 }

@@ -9,6 +9,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.rickandmorty.R
 import com.example.rickandmorty.launchFragmentInHiltContainer
+import com.example.rickandmorty.screen.characters.CharactersFragment
 import junit.framework.TestCase
 import org.junit.Assert.*
 import org.junit.Test

@@ -18,15 +18,15 @@ class CharactersPagingSource(
 
         return try {
             val response = charactersApi.getAllCharacters(page)
-
-            val nextPage = if (response.body()!!.results.isNullOrEmpty()) null else page + 1
+            val data = response.results
+            val nextPage = if (data.isEmpty()) null else page + 1
             LoadResult.Page(
-                data = response.body()!!.results,
-                prevKey = if (page == FIRST_PAGE) null else page -1,
+                data = data,
+                prevKey = if (page == FIRST_PAGE) null else page - 1,
                 nextKey = nextPage
             )
         } catch (exception: Exception) {
-            LoadResult.Error(exception)
+            return LoadResult.Error(exception)
         }
     }
 

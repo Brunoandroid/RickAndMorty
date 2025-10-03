@@ -23,10 +23,11 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("../key/RickAndMorty.jks")
-            keyAlias "RickAndMorty"
-            keyPassword "12345678"
-            storePassword "12345678"
+            def storeFilePath = project.findProperty('RELEASE_STORE_FILE') ?: "../key/RickAndMorty.jks"
+            storeFile file(storeFilePath)
+            keyAlias project.findProperty('RELEASE_KEY_ALIAS') ?: "RickAndMorty"
+            keyPassword project.findProperty('RELEASE_KEY_PASSWORD') ?: System.getenv('RELEASE_KEY_PASSWORD')
+            storePassword project.findProperty('RELEASE_STORE_PASSWORD') ?: System.getenv('RELEASE_STORE_PASSWORD')
         }
     }
 
@@ -73,6 +74,8 @@ dependencies {
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    // OkHttp logging (debug only)
+    debugImplementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
 
     //navigation
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.0"

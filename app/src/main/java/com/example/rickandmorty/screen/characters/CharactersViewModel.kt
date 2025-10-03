@@ -1,23 +1,18 @@
 package com.example.rickandmorty.screen.characters
 
-import android.app.Application
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
-import com.example.rickandmorty.base.BaseViewModel
+import androidx.paging.cachedIn
 import com.example.rickandmorty.data.model.character.Result
 import com.example.rickandmorty.data.repository.CharactersRepository
+import kotlinx.coroutines.flow.Flow
 
 class CharactersViewModel @ViewModelInject constructor(
-    private val repository: CharactersRepository,
-    application: Application
-) : BaseViewModel(application) {
+    private val repository: CharactersRepository
+) : ViewModel() {
 
-    val seeAllCharacters: MutableLiveData<PagingData<Result>> = MutableLiveData()
-
-    fun getAllCharacters() {
-        repository.getAllCharacters()
-            .observeForever { seeAllCharacters.value = it }
-    }
-
+    val characters: Flow<PagingData<Result>> =
+        repository.getAllCharacters().cachedIn(viewModelScope)
 }
