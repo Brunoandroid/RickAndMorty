@@ -52,11 +52,12 @@ jobs:
           sdkmanager "platform-tools" "platforms;android-${{ env.ANDROID_API_LEVEL }}" "build-tools;${{ env.ANDROID_BUILD_TOOLS }}"
           yes | sdkmanager --licenses
 
-      - name: Gradle cache
-        uses: gradle/gradle-build-action@v3
+      - name: Setup Gradle (caching)
+        uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-wrapper-cache-enabled: true
+          cache-read-only: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork }}
           gradle-home-cache-cleanup: true
+          add-job-summary: on-failure
 
       - name: Make gradlew executable
         run: chmod +x gradlew
@@ -125,11 +126,12 @@ jobs:
           sdkmanager "platform-tools" "platforms;android-${{ env.ANDROID_API_LEVEL }}" "build-tools;${{ env.ANDROID_BUILD_TOOLS }}"
           yes | sdkmanager --licenses
 
-      - name: Gradle cache
-        uses: gradle/gradle-build-action@v3
+      - name: Setup Gradle (caching)
+        uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-wrapper-cache-enabled: true
+          cache-read-only: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork }}
           gradle-home-cache-cleanup: true
+          add-job-summary: on-failure
 
       - name: Make gradlew executable
         run: chmod +x gradlew
