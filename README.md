@@ -10,7 +10,7 @@ CI configurado para:
 - Executar testes instrumentados (androidTest) somente em PRs para `master` e no build noturno (nightly).
 
 Requisitos do pipeline:
-- JDK 11
+- JDK 17
 - Android SDK: API 33 e Build Tools 30.0.3
 
 Como rodar localmente (exemplos):
