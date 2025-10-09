@@ -16,9 +16,9 @@ permissions:
   pull-requests: read
 
 env:
-  JAVA_VERSION: '17'
+  JAVA_VERSION: '11'
   ANDROID_API_LEVEL: '33'
-  ANDROID_BUILD_TOOLS: '30.0.3'
+  ANDROID_BUILD_TOOLS: '33.0.2'
   GRADLE_OPTS: '-Dorg.gradle.jvmargs=-Xmx3g'
   TERM: dumb
 
@@ -80,14 +80,14 @@ jobs:
             **/build/reports/lint/**
 
       - name: SonarQube Scan
-        if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
+        if: ${{ (github.event_name == 'push' || github.event_name == 'pull_request') && secrets.SONAR_TOKEN != '' && secrets.SONAR_HOST_URL != '' }}
         uses: SonarSource/sonarqube-scan-action@v3
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
       - name: SonarQube Quality Gate
-        if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
+        if: ${{ (github.event_name == 'push' || github.event_name == 'pull_request') && secrets.SONAR_TOKEN != '' && secrets.SONAR_HOST_URL != '' }}
         uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
         timeout-minutes: 5
         env:
