@@ -1,20 +1,36 @@
 # RickAndMorty
 
-[![Android CI](https://github.com/Brunoandroid/RickAndMorty/actions/workflows/android-ci.yml/badge.svg)](https://github.com/Brunoandroid/RickAndMorty/actions/workflows/android-ci.yml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=RickAndMorty&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=RickAndMorty)
+App Android (Kotlin) que consome a API pública Rick and Morty para listar personagens e exibir detalhes. Projeto focado em boas práticas, testabilidade e CI/CD com SonarCloud.
 
-Projeto Android (Kotlin) com CI via GitHub Actions.
+## Tecnologias e Arquitetura
+- Kotlin • MVVM • Coroutines + Flow
+- Hilt (DI) • Navigation Component • Fragments + RecyclerView
+- Retrofit + OkHttp • PagingSource customizado
+- Testes: JUnit e testes instrumentados (Espresso)
 
-CI configurado para:
-- Executar testes unitários e Android Lint em todo push e PR para `master` e `develop`.
-- Executar testes instrumentados (androidTest) somente em PRs para `master` e no build noturno (nightly).
-
-Requisitos do pipeline:
+## Requisitos
 - JDK 17
-- Android SDK: API 33 e Build Tools 30.0.3
+- Android SDK API 33 (Build Tools 30.0.3)
+- Gradle Wrapper incluso
 
-Como rodar localmente (exemplos):
-- Testes unitários: `./gradlew testDebugUnitTest`
-- Lint (debug): `./gradlew lintDebug`
-- APK debug: `./gradlew assembleDebug`
-- Testes instrumentados: iniciar um emulador/disp. físico e rodar `./gradlew connectedDebugAndroidTest`
+## Como executar
+macOS/Linux:
+- Testes: ./gradlew testDebugUnitTest
+- Lint: ./gradlew lintDebug
+- APK (debug): ./gradlew assembleDebug
+- Instrumentados: iniciar emulador e rodar ./gradlew connectedDebugAndroidTest
+
+Windows (PowerShell/CMD):
+- Testes: gradlew.bat testDebugUnitTest
+- Lint: gradlew.bat lintDebug
+- APK (debug): gradlew.bat assembleDebug
+- Instrumentados: iniciar emulador e rodar gradlew.bat connectedDebugAndroidTest
+
+## CI/CD e Qualidade
+- GitHub Actions: .github/workflows/project-ci.yml
+- SonarCloud: https://sonarcloud.io/summary/new_code?id=RickAndMorty
+
+## Estrutura
+- app/ — código-fonte, recursos e testes
+- sonar-project.properties — configuração SonarCloud
+- gradle*, settings.gradle — build via Wrapper
