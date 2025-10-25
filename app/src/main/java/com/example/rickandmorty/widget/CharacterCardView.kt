@@ -10,7 +10,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.rickandmorty.R
 import com.example.rickandmorty.databinding.CharacterCardViewBinding
 
-class CharacterCardView @JvmOverloads constructor(
+class CharacterCardView (
     context: Context,
     attrs: AttributeSet?,
 ) : CardView(context, attrs) {
