@@ -2,6 +2,9 @@
 
 App Android (Kotlin) que consome a API pública Rick and Morty para listar personagens e exibir detalhes. Projeto focado em boas práticas, testabilidade e CI/CD com SonarCloud.
 
+## Layout mobile
+<img src="https://github.com/Brunoandroid/Imagens/blob/main/rick.gif" width="350" height="700"/>
+
 ## Tecnologias e Arquitetura
 - Kotlin • MVVM • Coroutines + Flow
 - Hilt (DI) • Navigation Component • Fragments + RecyclerView
