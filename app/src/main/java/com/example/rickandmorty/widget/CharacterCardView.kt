@@ -7,19 +7,13 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.example.rickandmorty.R
 import com.example.rickandmorty.databinding.CharacterCardViewBinding
+import com.example.rickandmorty.utils.StatusColorUtil
 
-class CharacterCardView (
+class CharacterCardView(
     context: Context,
     attrs: AttributeSet?,
 ) : CardView(context, attrs) {
-
-    companion object {
-        const val STATUS_ALIVE = "Alive"
-        const val STATUS_DEAD = "Dead"
-        const val STATUS_UNKNOWN = "unknown"
-    }
 
     private val binding: CharacterCardViewBinding = CharacterCardViewBinding.inflate(
         LayoutInflater.from(context), this, true
@@ -38,23 +32,10 @@ class CharacterCardView (
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(imgCharacter)
 
-        when (status) {
-            STATUS_ALIVE -> imgVisibleCharacter.setColorFilter(
-                ContextCompat.getColor(
-                    context,
-                    R.color.greenPersonality
-                )
-            )
-            STATUS_DEAD -> imgVisibleCharacter.setColorFilter(
-                ContextCompat.getColor(
-                    context,
-                    R.color.redPersonality
-                )
-            )
-            STATUS_UNKNOWN -> imgVisibleCharacter.setColorFilter(
-                ContextCompat.getColor(context, R.color.darkGray)
-            )
-        }
+        val colorRes = StatusColorUtil.getColorForStatus(status)
+        imgVisibleCharacter.setColorFilter(
+            ContextCompat.getColor(context, colorRes)
+        )
     }
 
 }
