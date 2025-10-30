@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="140dp"
@@ -10,30 +11,46 @@
     app:strokeColor="@color/lightMediumGray"
     app:strokeWidth="1dp">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="12dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvEpisodeNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Ep. 1"
-            android:textColor="@color/darker"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="12dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="@string/episode"
-            android:textColor="@color/darkGray"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tvEpisodeNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Ep. 1"
+                android:textColor="@color/darker"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/episode"
+                android:textColor="@color/darkGray"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivEpisodeIcon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="top|end"
+            android:layout_margin="12dp"
+            android:contentDescription="@string/episode"
+            android:src="@drawable/ic_wand_stars"
+            app:tint="@color/darkIndigo"/>
+
+    </FrameLayout>
 
 </com.google.android.material.card.MaterialCardView>

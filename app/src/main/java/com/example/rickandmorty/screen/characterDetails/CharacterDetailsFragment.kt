@@ -57,7 +57,11 @@ class CharacterDetailsFragment : Fragment() {
         }
         bindingCharacterDetails.rvEpisodes.apply {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = EpisodesAdapter(episodeNumbers)
+            adapter = EpisodesAdapter(episodeNumbers) { episodeNumber ->
+                EpisodeBottomSheetDialogFragment
+                    .newInstance(episodeNumber)
+                    .show(childFragmentManager, "EpisodeBottomSheet")
+            }
             setHasFixedSize(true)
         }
 
