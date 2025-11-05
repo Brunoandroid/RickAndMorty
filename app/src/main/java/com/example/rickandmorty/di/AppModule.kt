@@ -5,7 +5,6 @@ import com.example.rickandmorty.data.character.CharacterApi
 import com.example.rickandmorty.data.gemini.GeminiApi
 import com.example.rickandmorty.utils.Constants.Companion.BASE_URL
 import com.example.rickandmorty.utils.Constants.Companion.GEMINI_BASE_URL
-import com.example.rickandmorty.utils.Constants.Companion.GEMINI_BEARER
 import com.example.rickandmorty.utils.Constants.Companion.GEMINI_HOST
 import dagger.Module
 import dagger.Provides
@@ -41,10 +40,15 @@ object AppModule {
             val url = original.url
 
             if (url.host.contains(GEMINI_HOST)) {
-                val newRequest = original.newBuilder()
-                    .addHeader("Authorization", "Bearer $GEMINI_BEARER")
-                    .build()
-                chain.proceed(newRequest)
+                val token = BuildConfig.GEMINI_BEARER
+                if (token.isNotBlank()) {
+                    val newRequest = original.newBuilder()
+                        .addHeader("Authorization", "Bearer $token")
+                        .build()
+                    chain.proceed(newRequest)
+                } else {
+                    chain.proceed(original)
+                }
             } else {
                 chain.proceed(original)
             }
