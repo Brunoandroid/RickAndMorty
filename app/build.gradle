@@ -19,6 +19,9 @@ android {
         versionName "1.0"
         
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        def geminiToken = project.findProperty('GEMINI_BEARER') ?: ""
+        buildConfigField 'String', 'GEMINI_BEARER', '"' + geminiToken + '"'
     }
 
     signingConfigs {

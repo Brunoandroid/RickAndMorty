@@ -17,7 +17,6 @@ abstract class BaseViewModel(application: Application): AndroidViewModel(applica
 
     protected fun defaultLaunch(
         loadingLiveData: LiveData<Boolean> = mLoadingChanged,
-        ignoreException: Boolean = false,
         block: suspend CoroutineScope.() -> Unit
     ) {
         viewModelScope.launch {
