@@ -2,7 +2,10 @@ package com.example.rickandmorty.di
 
 import com.example.rickandmorty.BuildConfig
 import com.example.rickandmorty.data.character.CharacterApi
+import com.example.rickandmorty.data.gemini.GeminiApi
 import com.example.rickandmorty.utils.Constants.Companion.BASE_URL
+import com.example.rickandmorty.utils.Constants.Companion.GEMINI_BASE_URL
+import com.example.rickandmorty.utils.Constants.Companion.GEMINI_HOST
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,7 +23,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providerHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(): OkHttpClient {
         val builder = OkHttpClient.Builder()
             .readTimeout(15, TimeUnit.SECONDS)
             .connectTimeout(15, TimeUnit.SECONDS)
@@ -32,18 +35,38 @@ object AppModule {
             builder.addInterceptor(logging)
         }
 
+        builder.addInterceptor { chain ->
+            val original = chain.request()
+            val url = original.url
+
+            if (url.host.contains(GEMINI_HOST)) {
+                val token = BuildConfig.GEMINI_BEARER
+                if (token.isNotBlank()) {
+                    val newRequest = original.newBuilder()
+                        .addHeader("Authorization", "Bearer $token")
+                        .build()
+                    chain.proceed(newRequest)
+                } else {
+                    chain.proceed(original)
+                }
+            } else {
+                chain.proceed(original)
+            }
+        }
+
         return builder.build()
     }
 
     @Singleton
     @Provides
-    fun providerConverterFactory(): GsonConverterFactory {
+    fun provideConverterFactory(): GsonConverterFactory {
         return GsonConverterFactory.create()
     }
 
     @Singleton
     @Provides
-    fun providerRetrofitInstance(
+    @RickAndMortyRetrofit
+    fun provideRickAndMortyRetrofit(
         okHttpClient: OkHttpClient,
         gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
@@ -56,8 +79,27 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providerApiService(retrofit: Retrofit): CharacterApi {
+    @GeminiRetrofit
+    fun provideGeminiRetrofit(
+        okHttpClient: OkHttpClient,
+        gsonConverterFactory: GsonConverterFactory
+    ): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(GEMINI_BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(gsonConverterFactory)
+            .build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideCharacterApi(@RickAndMortyRetrofit retrofit: Retrofit): CharacterApi {
         return retrofit.create(CharacterApi::class.java)
     }
 
+    @Singleton
+    @Provides
+    fun provideGeminiApi(@GeminiRetrofit retrofit: Retrofit): GeminiApi {
+        return retrofit.create(GeminiApi::class.java)
+    }
 }

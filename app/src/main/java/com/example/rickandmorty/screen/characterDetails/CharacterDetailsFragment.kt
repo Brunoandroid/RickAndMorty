@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.rickandmorty.databinding.FragmentCharacterDetailsBinding
 import com.example.rickandmorty.screen.characterDetails.adapter.EpisodesAdapter
+import com.example.rickandmorty.screen.characterDetails.bottomsheet.EpisodeBottomSheetDialogFragment
 import com.example.rickandmorty.utils.StatusColorUtil
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -55,11 +56,12 @@ class CharacterDetailsFragment : Fragment() {
         val episodeNumbers = character.episode.mapNotNull { url ->
             url.substringAfterLast('/').toIntOrNull()
         }
+
         bindingCharacterDetails.rvEpisodes.apply {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = EpisodesAdapter(episodeNumbers) { episodeNumber ->
+            adapter = EpisodesAdapter(character.name, episodeNumbers) { characterName, episode ->
                 EpisodeBottomSheetDialogFragment
-                    .newInstance(episodeNumber)
+                    .newInstance(characterName, episode)
                     .show(childFragmentManager, "EpisodeBottomSheet")
             }
             setHasFixedSize(true)

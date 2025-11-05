@@ -18,4 +18,9 @@
 
     <!-- Item Episode -->
     <string name="episode_number">Ep. %1$d</string>
+
+    <!-- Gemini -->
+    <string name="error_loading_summary">Falha ao carregar resumo</string>
+    <string name="gemini_prompt">Como é a participação do %1$s no episódio %2$d de Rick and Morty? - Retorne a informação resumida e formatada no máximo em 3 linhas e sem quebra de linhas</string>
+    <string name="error_fetching_episode_info">Erro ao buscar informações do episódio: %1$d</string>
 </resources>
