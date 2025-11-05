@@ -24,6 +24,7 @@ android {
         buildConfigField 'String', 'GEMINI_BEARER', '"' + geminiToken + '"'
     }
 
+
     signingConfigs {
         release {
             def storeFilePath = project.findProperty('RELEASE_STORE_FILE') ?: "../key/RickAndMorty.jks"
