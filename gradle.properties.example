@@ -1,0 +1,9 @@
+# Enable AndroidX and Jetifier for migration and required plugins
+android.useAndroidX=true
+android.enableJetifier=true
+
+# Kotlin style (optional, keeps consistency)
+kotlin.code.style=official
+
+# Gemini API bearer token
+GEMINI_BEARER=YOUR_TOKEN_HERE
