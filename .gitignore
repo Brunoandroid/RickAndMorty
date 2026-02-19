@@ -43,3 +43,4 @@ gradle.properties
  lint/outputs/
  lint/tmp/
 
+/secrets.txt
