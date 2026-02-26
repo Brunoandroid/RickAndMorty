@@ -19,6 +19,13 @@
     <!-- Item Episode -->
     <string name="episode_number">Ep. %1$d</string>
 
+    <string name="back">Back</string>
+
+    <!-- States -->
+    <string name="empty_characters">No characters found</string>
+    <string name="error_loading_characters">Failed to load characters.\nCheck your connection.</string>
+    <string name="retry">Try again</string>
+
     <!-- Gemini -->
     <string name="error_loading_summary">Falha ao carregar resumo</string>
     <string name="gemini_prompt">Como é a participação do %1$s no episódio %2$d de Rick and Morty? - Retorne a informação resumida e formatada no máximo em 3 linhas e sem quebra de linhas</string>

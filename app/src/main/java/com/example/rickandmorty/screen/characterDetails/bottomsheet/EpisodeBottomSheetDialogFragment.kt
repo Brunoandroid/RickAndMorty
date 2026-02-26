@@ -44,13 +44,12 @@ class EpisodeBottomSheetDialogFragment : BottomSheetDialogFragment() {
         val episodeNumber = requireArguments().getInt(ARG_EPISODE_NUMBER)
         binding.tvEpisodeNumber.text = getString(R.string.episode_number, episodeNumber)
 
-        viewModel.fetchEpisodeSummary(
-            context?.getString(
-                R.string.gemini_prompt,
-                characterName,
-                episodeNumber
-            )
-        )
+        val prompt = context?.getString(R.string.gemini_prompt, characterName, episodeNumber)
+        viewModel.fetchEpisodeSummary(prompt)
+
+        binding.btnRetry.setOnClickListener {
+            viewModel.fetchEpisodeSummary(prompt)
+        }
 
         initObservers()
     }
@@ -58,14 +57,23 @@ class EpisodeBottomSheetDialogFragment : BottomSheetDialogFragment() {
     private fun initObservers() {
         viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
             binding.progressBar.isVisible = isLoading == true
-            binding.tvSummary.isGone = isLoading == true
+            if (isLoading == true) {
+                binding.tvSummary.isGone = true
+                binding.layoutError.isGone = true
+            }
         }
         viewModel.summary.observe(viewLifecycleOwner) { text ->
-            binding.tvSummary.text = text
+            if (text != null) {
+                binding.tvSummary.isVisible = true
+                binding.tvSummary.text = text
+                binding.layoutError.isGone = true
+            }
         }
         viewModel.error.observe(viewLifecycleOwner) { error ->
             if (error != null) {
-                binding.tvSummary.text = getString(R.string.error_loading_summary)
+                binding.tvSummary.isGone = true
+                binding.progressBar.isGone = true
+                binding.layoutError.isVisible = true
             }
         }
     }

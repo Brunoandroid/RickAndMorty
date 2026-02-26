@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -65,6 +67,13 @@ class CharacterDetailsFragment : Fragment() {
                     .show(childFragmentManager, "EpisodeBottomSheet")
             }
             setHasFixedSize(true)
+        }
+
+        ViewCompat.setOnApplyWindowInsetsListener(bindingCharacterDetails.statusBarSpace) { view, insets ->
+            val statusBar = insets.getInsets(WindowInsetsCompat.Type.statusBars())
+            view.layoutParams.height = statusBar.top
+            view.requestLayout()
+            insets
         }
 
         return bindingCharacterDetails.root

@@ -2,6 +2,7 @@ package com.example.rickandmorty.screen.main
 
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.rickandmorty.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -10,6 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         Log.d("lifecycle", "onCreate")
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
