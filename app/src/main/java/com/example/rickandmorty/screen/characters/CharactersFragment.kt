@@ -17,7 +17,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import com.example.rickandmorty.R
-import com.example.rickandmorty.data.model.character.Result
+import com.example.rickandmorty.data.model.character.Character
 import com.example.rickandmorty.databinding.FragmentCharactersBinding
 import com.example.rickandmorty.screen.characters.adapter.CharacterPagingAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,9 +42,9 @@ class CharactersFragment : Fragment() {
         bindingCharacters.recyclerView.adapter = adapter
 
         adapter.listener = object : CharacterPagingAdapter.Listener {
-            override fun onCardClicked(result: Result, position: Int) {
+            override fun onCardClicked(character: Character, position: Int) {
                 val action = CharactersFragmentDirections
-                    .actionCharactersFragmentToCharacterDetailsFragment(result)
+                    .actionCharactersFragmentToCharacterDetailsFragment(character)
                 findNavController().navigate(action)
             }
         }

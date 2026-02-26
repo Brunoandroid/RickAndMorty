@@ -1,39 +1,36 @@
 package com.example.rickandmorty.base
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-abstract class BaseViewModel(application: Application): AndroidViewModel(application) {
+abstract class BaseViewModel : ViewModel() {
 
     val loading: LiveData<Boolean>
-        get() = mLoadingChanged
+        get() = _loading
 
-    protected val mLoadingChanged = MutableLiveData<Boolean>()
+    private val _loading = MutableLiveData<Boolean>()
 
     protected fun defaultLaunch(
-        loadingLiveData: LiveData<Boolean> = mLoadingChanged,
-        block: suspend CoroutineScope.() -> Unit
+        block: suspend CoroutineScope.() -> Unit,
+        onError: (Exception) -> Unit = {}
     ) {
         viewModelScope.launch {
             try {
-                loadingLiveData.postValue(true)
+                _loading.postValue(true)
                 block.invoke(this)
-                loadingLiveData.postValue(false)
+                _loading.postValue(false)
+            } catch (e: CancellationException) {
+                _loading.postValue(false)
+                throw e
             } catch (e: Exception) {
-                loadingLiveData.postValue(false)
+                _loading.postValue(false)
+                onError(e)
             }
         }
     }
-
-    protected fun <T> LiveData<T>.postValue(data: T){
-        if (this is MutableLiveData<T>) {
-            postValue(data)
-        }
-    }
-
 }

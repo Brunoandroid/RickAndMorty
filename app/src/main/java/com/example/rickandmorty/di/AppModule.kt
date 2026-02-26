@@ -5,7 +5,6 @@ import com.example.rickandmorty.data.character.CharacterApi
 import com.example.rickandmorty.data.gemini.GeminiApi
 import com.example.rickandmorty.utils.Constants.Companion.BASE_URL
 import com.example.rickandmorty.utils.Constants.Companion.GEMINI_BASE_URL
-import com.example.rickandmorty.utils.Constants.Companion.GEMINI_HOST
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,78 +22,76 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideOkHttpClient(): OkHttpClient {
-        val builder = OkHttpClient.Builder()
-            .readTimeout(15, TimeUnit.SECONDS)
-            .connectTimeout(15, TimeUnit.SECONDS)
-
-        if (BuildConfig.DEBUG) {
-            val logging = HttpLoggingInterceptor().apply {
-                level = HttpLoggingInterceptor.Level.BODY
-            }
-            builder.addInterceptor(logging)
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor =
+        HttpLoggingInterceptor().apply {
+            level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY
+                    else HttpLoggingInterceptor.Level.NONE
         }
-
-        builder.addInterceptor { chain ->
-            val original = chain.request()
-            val url = original.url
-
-            if (url.host.contains(GEMINI_HOST)) {
-                val newRequest = original.newBuilder()
-                    .addHeader("Authorization", "Bearer ${BuildConfig.GEMINI_BEARER}")
-                    .build()
-                chain.proceed(newRequest)
-            } else {
-                chain.proceed(original)
-            }
-        }
-
-        return builder.build()
-    }
 
     @Singleton
     @Provides
-    fun provideConverterFactory(): GsonConverterFactory {
-        return GsonConverterFactory.create()
-    }
+    @RickAndMortyRetrofit
+    fun provideRickAndMortyOkHttpClient(
+        logging: HttpLoggingInterceptor
+    ): OkHttpClient = OkHttpClient.Builder()
+        .readTimeout(15, TimeUnit.SECONDS)
+        .connectTimeout(15, TimeUnit.SECONDS)
+        .addInterceptor(logging)
+        .build()
+
+    @Singleton
+    @Provides
+    @GeminiRetrofit
+    fun provideGeminiOkHttpClient(
+        logging: HttpLoggingInterceptor
+    ): OkHttpClient = OkHttpClient.Builder()
+        .readTimeout(15, TimeUnit.SECONDS)
+        .connectTimeout(15, TimeUnit.SECONDS)
+        .addInterceptor(logging)
+        .addInterceptor { chain ->
+            val request = chain.request().newBuilder()
+                .addHeader("Authorization", "Bearer ${BuildConfig.GEMINI_BEARER}")
+                .build()
+            chain.proceed(request)
+        }
+        .build()
+
+    @Singleton
+    @Provides
+    fun provideConverterFactory(): GsonConverterFactory =
+        GsonConverterFactory.create()
 
     @Singleton
     @Provides
     @RickAndMortyRetrofit
     fun provideRickAndMortyRetrofit(
-        okHttpClient: OkHttpClient,
+        @RickAndMortyRetrofit okHttpClient: OkHttpClient,
         gsonConverterFactory: GsonConverterFactory
-    ): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .client(okHttpClient)
-            .addConverterFactory(gsonConverterFactory)
-            .build()
-    }
+    ): Retrofit = Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .client(okHttpClient)
+        .addConverterFactory(gsonConverterFactory)
+        .build()
 
     @Singleton
     @Provides
     @GeminiRetrofit
     fun provideGeminiRetrofit(
-        okHttpClient: OkHttpClient,
+        @GeminiRetrofit okHttpClient: OkHttpClient,
         gsonConverterFactory: GsonConverterFactory
-    ): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(GEMINI_BASE_URL)
-            .client(okHttpClient)
-            .addConverterFactory(gsonConverterFactory)
-            .build()
-    }
+    ): Retrofit = Retrofit.Builder()
+        .baseUrl(GEMINI_BASE_URL)
+        .client(okHttpClient)
+        .addConverterFactory(gsonConverterFactory)
+        .build()
 
     @Singleton
     @Provides
-    fun provideCharacterApi(@RickAndMortyRetrofit retrofit: Retrofit): CharacterApi {
-        return retrofit.create(CharacterApi::class.java)
-    }
+    fun provideCharacterApi(@RickAndMortyRetrofit retrofit: Retrofit): CharacterApi =
+        retrofit.create(CharacterApi::class.java)
 
     @Singleton
     @Provides
-    fun provideGeminiApi(@GeminiRetrofit retrofit: Retrofit): GeminiApi {
-        return retrofit.create(GeminiApi::class.java)
-    }
+    fun provideGeminiApi(@GeminiRetrofit retrofit: Retrofit): GeminiApi =
+        retrofit.create(GeminiApi::class.java)
 }

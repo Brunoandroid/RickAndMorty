@@ -7,9 +7,9 @@ data class Info(
     @SerializedName("count")
     val count: Int = 0,
     @SerializedName("next")
-    val next: String = "",
+    val next: String? = null,
     @SerializedName("pages")
     val pages: Int = 0,
     @SerializedName("prev")
-    val prev: Any = Any()
+    val prev: String? = null
 )

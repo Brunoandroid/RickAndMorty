@@ -1,6 +1,5 @@
 package com.example.rickandmorty.screen.characterDetails.bottomsheet
 
-import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.rickandmorty.base.BaseViewModel
@@ -10,21 +9,25 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EpisodeViewModel @Inject constructor(
-    application: Application,
     private val repository: GeminiRepository
-) : BaseViewModel(application) {
+) : BaseViewModel() {
 
     private val _summary = MutableLiveData<String>()
     val summary: LiveData<String> get() = _summary
 
-    private val _error = MutableLiveData<Unit?>()
-    val error: LiveData<Unit?> get() = _error
+    private val _error = MutableLiveData<Exception?>()
+    val error: LiveData<Exception?> get() = _error
 
     fun fetchEpisodeSummary(prompt: String?) {
-        defaultLaunch {
-            _error.postValue(null)
-            val text = repository.getEpisodeInfo(prompt ?: "")
-            _summary.postValue(text)
-        }
+        defaultLaunch(
+            block = {
+                _error.postValue(null)
+                val text = repository.getEpisodeInfo(prompt.orEmpty())
+                _summary.postValue(text)
+            },
+            onError = { e ->
+                _error.postValue(e)
+            }
+        )
     }
 }

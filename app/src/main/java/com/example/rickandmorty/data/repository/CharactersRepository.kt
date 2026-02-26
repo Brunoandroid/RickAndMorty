@@ -4,18 +4,18 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.rickandmorty.data.character.CharacterApi
-import com.example.rickandmorty.data.model.character.Result
+import com.example.rickandmorty.data.model.character.Character
 import com.example.rickandmorty.screen.characters.CharactersPagingSource
-import dagger.hilt.android.scopes.ActivityRetainedScoped
+import javax.inject.Singleton
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-@ActivityRetainedScoped
+@Singleton
 class CharactersRepository @Inject constructor(
     private val characterApi: CharacterApi
 ) {
 
-    fun getAllCharacters(): Flow<PagingData<Result>> {
+    fun getAllCharacters(): Flow<PagingData<Character>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 20,

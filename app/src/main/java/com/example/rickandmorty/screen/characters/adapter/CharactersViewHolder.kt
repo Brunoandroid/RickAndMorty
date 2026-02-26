@@ -3,7 +3,7 @@ package com.example.rickandmorty.screen.characters.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.rickandmorty.data.model.character.Result
+import com.example.rickandmorty.data.model.character.Character
 import com.example.rickandmorty.databinding.AdapterCharacterBinding
 
 class CharactersViewHolder(
@@ -22,7 +22,7 @@ class CharactersViewHolder(
         }
     }
 
-    private var character: Result? = null
+    private var character: Character? = null
 
     init {
 
@@ -35,7 +35,7 @@ class CharactersViewHolder(
 
     }
 
-    fun bind(character: Result?) {
+    fun bind(character: Character?) {
         this.character = character
 
         character?.let {

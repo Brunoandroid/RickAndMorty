@@ -7,5 +7,5 @@ data class CharacterResponse(
     @SerializedName("info")
     val info: Info = Info(),
     @SerializedName("results")
-    val results: List<Result> = emptyList()
+    val results: List<Character> = emptyList()
 )

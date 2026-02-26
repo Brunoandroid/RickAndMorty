@@ -4,6 +4,8 @@ import com.example.rickandmorty.data.gemini.GeminiApi
 import com.example.rickandmorty.data.model.gemini.body.Content
 import com.example.rickandmorty.data.model.gemini.body.GeminiBody
 import com.example.rickandmorty.data.model.gemini.body.Part
+import retrofit2.HttpException
+import java.io.IOException
 import javax.inject.Inject
 
 class GeminiRepository @Inject constructor(
@@ -17,18 +19,19 @@ class GeminiRepository @Inject constructor(
             )
         )
         val response = api.generateContent(body)
-        val text = response.body()
-            ?.candidates
-            ?.firstOrNull()
-            ?.content
-            ?.parts
-            ?.firstOrNull()
-            ?.text
-        return text
-            ?.replace("\n", " ")
-            ?.replace("\\s+".toRegex(), " ")
-            ?.trim()
-            .orEmpty()
 
+        if (!response.isSuccessful) {
+            throw HttpException(response)
+        }
+
+        val text = response.body()?.candidates
+            ?.firstOrNull()?.content
+            ?.parts?.firstOrNull()?.text
+            ?: throw IOException("Empty response body")
+
+        return text
+            .replace("\n", " ")
+            .replace("\\s+".toRegex(), " ")
+            .trim()
     }
 }

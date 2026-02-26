@@ -1,5 +1,8 @@
 package com.example.rickandmorty.data.model.gemini.response
 
+import com.google.gson.annotations.SerializedName
+
 data class Candidate(
-    val content: Content,
+    @SerializedName("content")
+    val content: Content
 )
