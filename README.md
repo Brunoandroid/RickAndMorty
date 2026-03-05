@@ -12,7 +12,7 @@ App Android (Kotlin) que consome a [API pública Rick and Morty](https://rickand
   <table>
     <tr>
       <td><img src="https://github.com/Brunoandroid/Imagens/blob/main/futurama_home.gif" width="350" height="700"/></td>
-      <td><img src="https://github.com/Brunoandroid/Imagens/blob/main/futurama_home.gif" width="350" height="700"/></td>
+      <td><img src="https://github.com/Brunoandroid/Imagens/blob/main/futurama_details.gif" width="350" height="700"/></td>
     </tr>
     <tr>
       <td align="center"><b>Lista de Personagens</b></td>
@@ -111,3 +111,4 @@ gradlew.bat connectedDebugAndroidTest
 
 - **GitHub Actions:** `.github/workflows/project-ci.yml`
 - **SonarCloud:** [Painel do projeto](https://sonarcloud.io/summary/new_code?id=RickAndMorty)
+
