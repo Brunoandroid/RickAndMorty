@@ -10,10 +10,10 @@ object StatusColorUtil {
     @ColorRes
     fun getColorForStatus(status: String): Int {
         return when (status.lowercase()) {
-            STATUS_ALIVE -> R.color.greenPersonality
-            STATUS_DEAD -> R.color.redPersonality
-            STATUS_UNKNOWN -> R.color.darkGray
-            else -> R.color.darkGray
+            STATUS_ALIVE -> R.color.status_alive
+            STATUS_DEAD -> R.color.status_dead
+            STATUS_UNKNOWN -> R.color.status_unknown
+            else -> R.color.status_unknown
         }
     }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightGray"
+    android:background="?attr/colorSurface"
     tools:context=".screen.characterDetails.CharacterDetailsFragment">
 
     <LinearLayout
@@ -16,7 +16,7 @@
             android:id="@+id/statusBarSpace"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/blue" />
+            android:background="?attr/colorPrimary" />
 
         <FrameLayout
             android:id="@+id/heroHeader"
@@ -43,9 +43,8 @@
                 android:id="@+id/tvCharacterDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/darker"
-                android:textSize="26sp"
-                android:textStyle="bold"
+                android:textAppearance="?attr/textAppearanceHeadlineMedium"
+                android:textColor="?attr/colorOnSurface"
                 tools:text="Rick Sanchez" />
 
             <TextView
@@ -58,8 +57,8 @@
                 android:paddingEnd="16dp"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
+                android:textAppearance="?attr/textAppearanceLabelMedium"
                 android:textColor="@color/white"
-                android:textStyle="bold"
                 tools:text="Alive" />
 
         </LinearLayout>
@@ -71,7 +70,6 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/bg_info_section"
-            android:elevation="1dp"
             android:orientation="vertical"
             android:padding="16dp">
 
@@ -86,7 +84,8 @@
                 <ImageView
                     android:layout_width="22dp"
                     android:layout_height="22dp"
-                    android:src="@drawable/ic_species" />
+                    android:src="@drawable/ic_species"
+                    app:tint="?attr/colorPrimary" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -100,19 +99,16 @@
                         android:layout_height="wrap_content"
                         android:text="@string/species"
                         android:textAllCaps="true"
-                        android:textColor="@color/darkGray"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:letterSpacing="0.06" />
+                        android:textAppearance="?attr/textAppearanceLabelSmall"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
 
                     <TextView
                         android:id="@+id/tvSpecies"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:textColor="@color/darker"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
+                        android:textAppearance="?attr/textAppearanceBodyLarge"
+                        android:textColor="?attr/colorOnSurface"
                         tools:text="Human" />
 
                 </LinearLayout>
@@ -124,7 +120,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@color/mediumGray" />
+                android:background="?attr/colorOutlineVariant" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -137,7 +133,8 @@
                 <ImageView
                     android:layout_width="22dp"
                     android:layout_height="22dp"
-                    android:src="@drawable/ic_gender" />
+                    android:src="@drawable/ic_gender"
+                    app:tint="?attr/colorPrimary" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -151,19 +148,16 @@
                         android:layout_height="wrap_content"
                         android:text="@string/gender"
                         android:textAllCaps="true"
-                        android:textColor="@color/darkGray"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:letterSpacing="0.06" />
+                        android:textAppearance="?attr/textAppearanceLabelSmall"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
 
                     <TextView
                         android:id="@+id/tvGender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:textColor="@color/darker"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
+                        android:textAppearance="?attr/textAppearanceBodyLarge"
+                        android:textColor="?attr/colorOnSurface"
                         tools:text="Male" />
 
                 </LinearLayout>
@@ -175,7 +169,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@color/mediumGray" />
+                android:background="?attr/colorOutlineVariant" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -188,7 +182,8 @@
                 <ImageView
                     android:layout_width="22dp"
                     android:layout_height="22dp"
-                    android:src="@drawable/ic_origin" />
+                    android:src="@drawable/ic_origin"
+                    app:tint="?attr/colorPrimary" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -202,19 +197,16 @@
                         android:layout_height="wrap_content"
                         android:text="@string/origin"
                         android:textAllCaps="true"
-                        android:textColor="@color/darkGray"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:letterSpacing="0.06" />
+                        android:textAppearance="?attr/textAppearanceLabelSmall"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
 
                     <TextView
                         android:id="@+id/tvOrigin"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:textColor="@color/darker"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
+                        android:textAppearance="?attr/textAppearanceBodyLarge"
+                        android:textColor="?attr/colorOnSurface"
                         tools:text="Earth C-137" />
 
                 </LinearLayout>
@@ -226,7 +218,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@color/mediumGray" />
+                android:background="?attr/colorOutlineVariant" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -239,7 +231,8 @@
                 <ImageView
                     android:layout_width="22dp"
                     android:layout_height="22dp"
-                    android:src="@drawable/ic_location" />
+                    android:src="@drawable/ic_location"
+                    app:tint="?attr/colorPrimary" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -253,19 +246,16 @@
                         android:layout_height="wrap_content"
                         android:text="@string/location"
                         android:textAllCaps="true"
-                        android:textColor="@color/darkGray"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:letterSpacing="0.06" />
+                        android:textAppearance="?attr/textAppearanceLabelSmall"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
 
                     <TextView
                         android:id="@+id/tvLocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:textColor="@color/darker"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
+                        android:textAppearance="?attr/textAppearanceBodyLarge"
+                        android:textColor="?attr/colorOnSurface"
                         tools:text="Citadel of Ricks" />
 
                 </LinearLayout>
@@ -281,9 +271,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="28dp"
             android:text="@string/episodes"
-            android:textColor="@color/darker"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:textAppearance="?attr/textAppearanceTitleLarge"
+            android:textColor="?attr/colorOnSurface" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvEpisodes"

@@ -1,6 +1,7 @@
 package com.example.rickandmorty.screen.characters
 
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -73,6 +74,8 @@ class CharactersFragment : Fragment() {
             insets
         }
 
+        applyThemeColorsToMotionScene()
+
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
@@ -86,6 +89,23 @@ class CharactersFragment : Fragment() {
                     }
                 }
             }
+        }
+    }
+
+    private fun applyThemeColorsToMotionScene() {
+        val typedValue = TypedValue()
+        requireContext().theme.resolveAttribute(
+            com.google.android.material.R.attr.colorOnPrimary, typedValue, true
+        )
+        val titleColor = typedValue.data
+
+        bindingCharacters.motionLayout.getConstraintSet(R.id.start)?.let { startSet ->
+            startSet.setColorValue(R.id.tvTitle, "textColor", titleColor)
+            bindingCharacters.motionLayout.updateState(R.id.start, startSet)
+        }
+        bindingCharacters.motionLayout.getConstraintSet(R.id.end)?.let { endSet ->
+            endSet.setColorValue(R.id.tvTitle, "textColor", titleColor)
+            bindingCharacters.motionLayout.updateState(R.id.end, endSet)
         }
     }
 

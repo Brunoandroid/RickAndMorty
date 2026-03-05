@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_card_character"
-    android:elevation="2dp">
+    android:background="@drawable/bg_card_character">
 
     <ImageView
         android:id="@+id/imgCharacter"
@@ -24,9 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="12dp"
-        android:textColor="@color/darker"
-        android:textSize="17sp"
-        android:textStyle="bold"
+        android:textAppearance="?attr/textAppearanceBodyLarge"
+        android:textColor="?attr/colorOnSurface"
         app:layout_constraintBottom_toTopOf="@id/tvStatusBadge"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/imgCharacter"
@@ -45,9 +43,8 @@
         android:paddingEnd="12dp"
         android:paddingTop="4dp"
         android:paddingBottom="4dp"
+        android:textAppearance="?attr/textAppearanceLabelMedium"
         android:textColor="@color/white"
-        android:textSize="13sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/imgCharacter"
         app:layout_constraintStart_toEndOf="@id/imgCharacter"
         app:layout_constraintTop_toBottomOf="@id/tvName"

@@ -27,7 +27,7 @@
             motion:layout_constraintTop_toTopOf="parent">
             <CustomAttribute
                 motion:attributeName="textColor"
-                motion:customColorValue="#000000" />
+                motion:customColorValue="#FFFFFF" />
         </Constraint>
     </ConstraintSet>
 

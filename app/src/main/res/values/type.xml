@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- M3 Type Scale (Roboto default) -->
+
+    <!-- Display -->
+    <style name="TextAppearance.RickAndMorty.DisplaySmall" parent="TextAppearance.Material3.DisplaySmall" />
+
+    <!-- Headline -->
+    <style name="TextAppearance.RickAndMorty.HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge" />
+    <style name="TextAppearance.RickAndMorty.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium" />
+    <style name="TextAppearance.RickAndMorty.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall" />
+
+    <!-- Title -->
+    <style name="TextAppearance.RickAndMorty.TitleLarge" parent="TextAppearance.Material3.TitleLarge" />
+    <style name="TextAppearance.RickAndMorty.TitleMedium" parent="TextAppearance.Material3.TitleMedium" />
+    <style name="TextAppearance.RickAndMorty.TitleSmall" parent="TextAppearance.Material3.TitleSmall" />
+
+    <!-- Body -->
+    <style name="TextAppearance.RickAndMorty.BodyLarge" parent="TextAppearance.Material3.BodyLarge" />
+    <style name="TextAppearance.RickAndMorty.BodyMedium" parent="TextAppearance.Material3.BodyMedium" />
+    <style name="TextAppearance.RickAndMorty.BodySmall" parent="TextAppearance.Material3.BodySmall" />
+
+    <!-- Label -->
+    <style name="TextAppearance.RickAndMorty.LabelLarge" parent="TextAppearance.Material3.LabelLarge" />
+    <style name="TextAppearance.RickAndMorty.LabelMedium" parent="TextAppearance.Material3.LabelMedium" />
+    <style name="TextAppearance.RickAndMorty.LabelSmall" parent="TextAppearance.Material3.LabelSmall" />
+</resources>

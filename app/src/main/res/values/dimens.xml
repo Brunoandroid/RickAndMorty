@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Spacing tokens (4dp grid) -->
+    <dimen name="spacing_xs">4dp</dimen>
+    <dimen name="spacing_sm">8dp</dimen>
+    <dimen name="spacing_md">12dp</dimen>
+    <dimen name="spacing_lg">16dp</dimen>
+    <dimen name="spacing_xl">24dp</dimen>
+    <dimen name="spacing_xxl">32dp</dimen>
+
+    <!-- Screen margins -->
+    <dimen name="screen_margin">16dp</dimen>
+
+    <!-- Card -->
+    <dimen name="card_corner_radius">16dp</dimen>
+    <dimen name="card_item_margin_vertical">4dp</dimen>
+
+    <!-- Character card -->
+    <dimen name="character_image_size">100dp</dimen>
+
+    <!-- Episode card -->
+    <dimen name="episode_card_width">120dp</dimen>
+    <dimen name="episode_card_height">90dp</dimen>
+
+    <!-- Hero header -->
+    <dimen name="hero_header_height">220dp</dimen>
+
+    <!-- Collapsing header -->
+    <dimen name="header_expanded_height">200dp</dimen>
+
+    <!-- BottomSheet -->
+    <dimen name="bottom_sheet_corner_radius">28dp</dimen>
+
+    <!-- Status chip -->
+    <dimen name="chip_corner_radius">12dp</dimen>
+    <dimen name="chip_padding_horizontal">12dp</dimen>
+    <dimen name="chip_padding_vertical">4dp</dimen>
+
+    <!-- Info section -->
+    <dimen name="info_icon_size">22dp</dimen>
+    <dimen name="divider_height">1dp</dimen>
+</resources>

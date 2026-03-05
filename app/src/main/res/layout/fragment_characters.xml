@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightGray"
+    android:background="?attr/colorSurface"
     tools:context=".screen.characters.CharactersFragment">
 
     <androidx.constraintlayout.motion.widget.MotionLayout
@@ -17,7 +17,7 @@
             android:id="@+id/layoutInit"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="@color/blue"
+            android:background="?attr/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -27,9 +27,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/rick_and_morty"
-                android:textColor="@color/black"
-                android:textSize="25sp"
-                android:textStyle="bold"
+                android:textAppearance="?attr/textAppearanceHeadlineSmall"
+                android:textColor="?attr/colorOnPrimary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -67,15 +66,16 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:alpha="0.4"
-                android:src="@drawable/ic_error" />
+                android:src="@drawable/ic_error"
+                app:tint="?attr/colorOnSurfaceVariant" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/empty_characters"
-                android:textColor="@color/darkGray"
-                android:textSize="16sp" />
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:textColor="?attr/colorOnSurfaceVariant" />
 
         </LinearLayout>
 
@@ -95,7 +95,8 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:alpha="0.4"
-                android:src="@drawable/ic_error" />
+                android:src="@drawable/ic_error"
+                app:tint="?attr/colorOnSurfaceVariant" />
 
             <TextView
                 android:id="@+id/tvErrorMessage"
@@ -104,16 +105,16 @@
                 android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:text="@string/error_loading_characters"
-                android:textColor="@color/darkGray"
-                android:textSize="16sp" />
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:textColor="?attr/colorOnSurfaceVariant" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnRetry"
+                style="@style/Widget.Material3.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="@string/retry"
-                app:cornerRadius="24dp" />
+                android:text="@string/retry" />
 
         </LinearLayout>
 
