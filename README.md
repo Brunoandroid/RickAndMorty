@@ -8,7 +8,18 @@ App Android (Kotlin) que consome a [API pública Rick and Morty](https://rickand
 ![API](https://img.shields.io/badge/Android%20API-21%2B-brightgreen?logo=android)
 
 ## Layout mobile
-<img src="https://github.com/Brunoandroid/Imagens/blob/main/rick.gif" width="350" height="700"/>
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://github.com/Brunoandroid/Imagens/blob/main/futurama_home.gif" width="350" height="700"/></td>
+      <td><img src="https://github.com/Brunoandroid/Imagens/blob/main/futurama_home.gif" width="350" height="700"/></td>
+    </tr>
+    <tr>
+      <td align="center"><b>Lista de Personagens</b></td>
+      <td align="center"><b>Detalhes</b></td>
+    </tr>
+  </table>
+</div>
 
 ---
 
